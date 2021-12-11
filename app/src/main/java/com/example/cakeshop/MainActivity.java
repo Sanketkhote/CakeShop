@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         shop_recycler=findViewById(R.id.shop_recycler);
-        showShopDetails("http://192.168.0.6:8080/shops",shop_recycler);
+        showShopDetails("http://192.168.0.5:8080/shops",shop_recycler);
     }
     public void showShopDetails(String url,final RecyclerView recyclerView){
         List<Listitem> listitems_shop;
@@ -52,25 +52,18 @@ public class MainActivity extends AppCompatActivity {
 
         RequestQueue requestQueue= Volley.newRequestQueue(this);
 
-        JsonObjectRequest jsonArrayReq = new JsonObjectRequest(
+        JsonArrayRequest jsonArrayReq = new JsonArrayRequest(
                 Request.Method.GET, url,null,
-                new Response.Listener<JSONObject>() {
+                new Response.Listener<JSONArray>() {
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(JSONArray response) {
                         Log.e("error",String.valueOf(response));
-                        JSONArray jsonArray = null;
-                        try {
-                            jsonArray = response.getJSONArray("shops");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            String shop = null;
+                        for (int i = 0; i < response.length(); i++) {
                             try {
-
-                                Listitem item = new Listitem(jsonArray.getString(i),
-                                        jsonArray.getString(i),
-                                        jsonArray.getString(i));
+                                JSONObject o= response.getJSONObject(i);
+                                Listitem item = new Listitem(o.getString("image"),
+                                        o.getString("shop_name"),
+                                        o.getString("address"));
                                 listitems_shop.add(item);
                             } catch (JSONException jsonException) {
                                 jsonException.printStackTrace();

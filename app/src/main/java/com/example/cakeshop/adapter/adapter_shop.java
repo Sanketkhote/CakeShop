@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.cakeshop.R;
+import com.squareup.picasso.Picasso;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,9 +33,8 @@ public class adapter_shop  extends RecyclerView.Adapter<adapter_shop.ViewHolder>
     public void onBindViewHolder(@NonNull adapter_shop.ViewHolder holder, int position) {
         final Listitem listItem = listItems.get(position);
         holder.heading.setText(listItem.getHeading());
-        holder.subHeading.setText("₹ " + listItem.getSubHeading());
-        //we can put image over here
-        //holder.letter.setImageDrawable();
+        holder.subHeading.setText("Address: " + listItem.getSubHeading());
+        Picasso.with(context).load(listItem.getImage()).into(holder.letter);
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
