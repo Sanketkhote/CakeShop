@@ -3,51 +3,43 @@ package com.example.cakeshop;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
 import android.util.Log;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Cache;
-import com.android.volley.NetworkResponse;
-import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cakeshop.adapter.Listitem;
+import com.example.cakeshop.adapter.Listitem_cake;
+import com.example.cakeshop.adapter.adapter_cake;
 import com.example.cakeshop.adapter.adapter_shop;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
-    RecyclerView shop_recycler;
-    RecyclerView.Adapter adapterShop;
+public class Cakes extends AppCompatActivity {
+    RecyclerView cake_recycler;
+    RecyclerView.Adapter adapterCake;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        shop_recycler=findViewById(R.id.shop_recycler);
-        showShopDetails("http://192.168.225.181:8080/shops",shop_recycler);
+        setContentView(R.layout.activity_cakes);
+        cake_recycler=findViewById(R.id.cake_recycler);
+        Bundle bundle = getIntent().getExtras();
+        String shopName = bundle.getString("shop_name");
+        showCakeDetails("http://192.168.225.181:8080/shops/"+shopName,cake_recycler,shopName);
     }
-    public void showShopDetails(String url,final RecyclerView recyclerView){
-        List<Listitem> listitems_shop;
+    public void showCakeDetails(String url,final RecyclerView recyclerView,String shopName){
+        List<Listitem_cake> listitems_shop;
         listitems_shop=new ArrayList<>();
 
         RequestQueue requestQueue= Volley.newRequestQueue(this);
@@ -58,12 +50,14 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.e("error",String.valueOf(response));
+
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject o= response.getJSONObject(i);
-                                Listitem item = new Listitem(o.getString("image"),
-                                        o.getString("shop_name"),
-                                        o.getString("address"));
+                                Listitem_cake item = new Listitem_cake(o.getString("image"),
+                                        o.getString("cake_name"),
+                                        o.getString("price"),
+                                        o.getInt("price"));
                                 listitems_shop.add(item);
                             } catch (JSONException jsonException) {
                                 jsonException.printStackTrace();
@@ -71,10 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                         LinearLayoutManager verticalLayoutManagaer
-                                = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false);
-                        shop_recycler.setLayoutManager(verticalLayoutManagaer);
-                        adapterShop =new adapter_shop(listitems_shop,getApplicationContext());
-                        shop_recycler.setAdapter(adapterShop);
+                                = new LinearLayoutManager(Cakes.this, LinearLayoutManager.VERTICAL, false);
+                        cake_recycler.setLayoutManager(verticalLayoutManagaer);
+                        adapterCake =new adapter_cake(listitems_shop,getApplicationContext(),shopName);
+                        cake_recycler.setAdapter(adapterCake);
 
 
                     }
@@ -89,10 +83,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }) ;
         requestQueue.add(jsonArrayReq);
-
-    }
-
-    public void getShopDetails(){
 
     }
 }

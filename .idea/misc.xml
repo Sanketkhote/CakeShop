@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/sanke/AndroidStudioProjects/CakeShop/app/src/main/res/layout/activity_cakes.xml" value="0.2391304347826087" />
         <entry key="..\:/Users/sanke/AndroidStudioProjects/CakeShop/app/src/main/res/layout/activity_main.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/sanke/AndroidStudioProjects/CakeShop/app/src/main/res/layout/item_cake.xml" value="0.2391304347826087" />
         <entry key="..\:/Users/sanke/AndroidStudioProjects/CakeShop/app/src/main/res/layout/item_shop.xml" value="0.24818840579710144" />
       </map>
     </option>
