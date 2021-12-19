@@ -64,7 +64,7 @@ public class HomeActivity extends Activity {
     }
 
     private void startOrderActivity() {
-        Intent intent = new Intent(this, ThemeActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

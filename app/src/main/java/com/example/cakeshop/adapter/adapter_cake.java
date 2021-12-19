@@ -25,6 +25,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cakeshop.Cakes;
 import com.example.cakeshop.Constant;
+import com.example.cakeshop.MainActivity;
 import com.example.cakeshop.R;
 import com.example.cakeshop.SummaryActivity;
 import com.example.cakeshop.ThemeActivity;
@@ -71,10 +72,10 @@ public class adapter_cake extends RecyclerView.Adapter<adapter_cake.ViewHolder> 
                 try {
                     Constant.shopName = ShopName;
                     Constant.listItem = listItem;
-//                    Intent intent = new Intent(.this, SummaryActivity.class);
-//                    startActivity(intent);
-                    sendBuyOrder(context,"http://192.168.225.181:8080/order",listItem,ShopName);
-                } catch (JSONException e) {
+                    Intent intent = new Intent(context, ThemeActivity.class);
+                    context.startActivity(intent);
+//                    sendBuyOrder(context,"http://192.168.225.181:8080/order",listItem,ShopName);
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -103,7 +104,7 @@ public class adapter_cake extends RecyclerView.Adapter<adapter_cake.ViewHolder> 
             linearLayout = itemView.findViewById(R.id.linear_click);
         }
     }
-    public void sendBuyOrder(Context context,String url,Listitem_cake listitem,String shopName) throws JSONException {
+    public static void sendBuyOrder(Context context,String url,Listitem_cake listitem,String shopName) throws JSONException {
         JSONObject jsonRequest=new JSONObject();
         jsonRequest.put("shop_name",shopName);
         jsonRequest.put("cake_name",listitem.getHeading());

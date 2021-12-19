@@ -36,7 +36,7 @@ public class Cakes extends AppCompatActivity {
         cake_recycler=findViewById(R.id.cake_recycler);
         Bundle bundle = getIntent().getExtras();
         String shopName = bundle.getString("shop_name");
-        showCakeDetails("http://192.168.225.181:8080/shops/"+shopName,cake_recycler,shopName);
+        showCakeDetails(Constant.endpoint+"/shops/"+shopName,cake_recycler,shopName);
     }
     public void showCakeDetails(String url,final RecyclerView recyclerView,String shopName){
         List<Listitem_cake> listitems_shop;

@@ -1,17 +1,35 @@
 package com.example.cakeshop;
 
+import static com.example.cakeshop.Constant.emailText;
+import static com.example.cakeshop.Constant.listItem;
+import static com.example.cakeshop.adapter.adapter_cake.sendBuyOrder;
+
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SummaryActivity extends Activity {
@@ -19,12 +37,14 @@ public class SummaryActivity extends Activity {
     private String mDateString;
     private String mTimeString;
     private TextView mDateText;
-    private TextView mTimeText;
-    private TextView mSugarFreeText;
-    private TextView mFlavourText;
-    private TextView mToppingText;
+    private TextView  mShopText;
+    private TextView mCakeTitleText;
+    private TextView mNumberText;
+    private TextView mEmailText;
     private TextView mCostText;
     private TextView mThemeText;
+    private TextView mAddressText;
+
     private TextView mWeightText;
     private Button mChangeButton;
     private Intent mIntent;
@@ -36,14 +56,71 @@ public class SummaryActivity extends Activity {
 //        setDateAndTime();
         setLayout();
         mIntent = getIntent();
+
+        Button button = findViewById(R.id.finalButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    sendBuyOrder(getApplicationContext(),Constant.endpoint+"/order",listItem,Constant.shopName);
+                    sendEmail(Constant.endpoint+"/send-email/"+emailText.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
-    private void setLayout() {
-        int cost = Constant.listItem.getPrice();
+    private void sendEmail(String url) {
+        RequestQueue MyRequestQueue = Volley.newRequestQueue(getApplicationContext());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,null,new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText(getApplicationContext(),"Email Sent Successfully",Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("oder error", String.valueOf(error));
+            }
+        }) {
+            protected Map<String, String> getParams() {
+                Map<String, String> MyData = new HashMap<String, String>();
+                MyData.put("Field", "Value"); //Add the data you'd like to send to the server.
+                return MyData;
+            }
+        };
+        MyRequestQueue.add(jsonObjectRequest);
+    }
 
+
+    private void setLayout() {
+        int cost = 0;
+        try{
+            cost = listItem.getPrice();
+        }catch (NullPointerException e){
+            Log.e("PriceNull", "price not present");
+        }
         //flavours ops
 
-//        mFlavourText = (TextView) findViewById(R.id.flavourLabel);
+        mNumberText = (TextView) findViewById(R.id.numberLabel);
+        mEmailText = (TextView) findViewById(R.id.emailLabel);
+        mAddressText  = (TextView)findViewById(R.id.addressLabel);
+        mThemeText = (TextView) findViewById(R.id.themeLabel);
+        mCakeTitleText = (TextView) findViewById(R.id.cakeTitalLabel);
+        mShopText = (TextView) findViewById(R.id.shopLabel);
+
+
+
+        mNumberText.setText(Constant.numberText);
+        mEmailText.setText(Constant.emailText);
+        mAddressText.setText(Constant.address);
+        mCakeTitleText.setText(Constant.cakeText);
+        mShopText.setText(Constant.shopName);
+
+        String theme = Constant.cakeTheme;
+
 //        int flavourPos = Data.baseIndex;
 //        mFlavourText.setText("Base Flavour: " +
 //                Pages.cakePage.getObjects()[flavourPos].getDisplayName());
@@ -66,8 +143,7 @@ public class SummaryActivity extends Activity {
 
         //theme ops
 
-        mThemeText = (TextView) findViewById(R.id.themeLabel);
-        String theme = Constant.cakeTheme;
+
         if (!theme.isEmpty()){
             mThemeText.setText("Personal Theme: " + theme + " (add Rs. 200)");
             cost+=200;

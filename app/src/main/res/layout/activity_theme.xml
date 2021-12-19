@@ -92,7 +92,7 @@
             android:textSize="20sp"
             android:textColor="#beffffff"
             android:padding="3dp"
-            android:layout_below="@+id/themeGrid"
+            android:layout_below="@+id/theme_prompt_label"
             android:layout_alignStart="@+id/themeGrid"
             android:layout_marginTop="10dp"/>
 
@@ -107,9 +107,62 @@
             android:layout_below="@+id/theme_prompt"
             android:layout_alignStart="@+id/theme_prompt"
             android:layout_marginTop="6dp"
+            android:inputType="textCapWords"/>
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Enter your Emaild Id- "-->
+<!--            android:id="@+id/emailText"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textColor="#beffffff"-->
+<!--            android:padding="3dp"-->
+<!--            android:layout_below="@+id/themeGrid"-->
+<!--            android:layout_alignStart="@+id/themeGrid"-->
+<!--            android:layout_marginTop="10dp"/>-->
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/emailText_edit"
+            android:hint="Enter your email Id"
+            android:textSize="14sp"
+            android:textColorHint="#99ffffff"
+            android:textColor="#eeffffff"
+            android:layout_below="@+id/theme_edit_text"
+            android:layout_alignStart="@+id/theme_prompt"
+            android:layout_marginTop="6dp"
             android:layout_marginBottom="12dp"
             android:inputType="textCapWords"/>
-<!--            android:background="@drawable/abc_edit_text_material"-->
+
+        <EditText
+            android:id="@+id/phone_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/emailText_edit"
+            android:layout_alignStart="@+id/theme_prompt"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="12dp"
+            android:hint="Enter your Phone Number"
+            android:inputType="number"
+            android:textColor="#eeffffff"
+            android:textColorHint="#99ffffff"
+            android:textSize="14sp" />
+        <EditText
+            android:id="@+id/address_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/phone_edit"
+            android:layout_alignStart="@+id/theme_prompt"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="12dp"
+            android:hint="Enter your Address"
+            android:inputType="textCapWords"
+            android:textColor="#eeffffff"
+            android:textColorHint="#99ffffff"
+            android:textSize="14sp" />
+
+        <!--            android:background="@drawable/abc_edit_text_material"-->
 
 
     </RelativeLayout>

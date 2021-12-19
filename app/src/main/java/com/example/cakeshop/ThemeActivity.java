@@ -19,8 +19,10 @@ public class ThemeActivity extends Activity {
     private int weightOpt;
     private EditText mThemeEdit;
     private EditText mTitleEdit;
+    private EditText mNumberEdit;
+    private EditText mEmailEdit;
     private Button mContinueButton;
-
+    private EditText mAddressEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,9 @@ public class ThemeActivity extends Activity {
 //        Toast.makeText(this, " " + cakeOpt + " " + creamOpt, Toast.LENGTH_LONG).show();
         mThemeEdit = (EditText) findViewById(R.id.theme_edit_text);
         mTitleEdit = (EditText) findViewById(R.id.cake_edit_text);
+        mNumberEdit = (EditText) findViewById(R.id.phone_edit);
+        mEmailEdit = (EditText) findViewById(R.id.emailText_edit);
+        mAddressEdit =(EditText) findViewById(R.id.address_edit);
 //        mLogos = Pages.themePics;
 //        ThemeAdapter adapter = new ThemeAdapter(this, mLogos);
 //        mGridView = (GridView) findViewById(R.id.themeGrid);
@@ -44,8 +49,15 @@ public class ThemeActivity extends Activity {
             public void onClick(View v) {
                 String themeText =  mThemeEdit.getText().toString();
                 String titleText = mTitleEdit.getText().toString();
+                String numberText = mNumberEdit.getText().toString();
+                String emailText = mEmailEdit.getText().toString();
+                String addressText = mAddressEdit.getText().toString();
+
                 Constant.cakeText = titleText;
                 Constant.cakeTheme = themeText;
+                Constant.numberText = numberText;
+                Constant.emailText = emailText;
+                Constant.address = addressText;
 
                 Intent intent = new Intent(ThemeActivity.this, SummaryActivity.class);
                 startActivity(intent);
