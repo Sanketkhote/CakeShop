@@ -24,7 +24,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cakeshop.Cakes;
+import com.example.cakeshop.Constant;
 import com.example.cakeshop.R;
+import com.example.cakeshop.SummaryActivity;
+import com.example.cakeshop.ThemeActivity;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -66,6 +69,10 @@ public class adapter_cake extends RecyclerView.Adapter<adapter_cake.ViewHolder> 
             @Override
             public void onClick(View v) {
                 try {
+                    Constant.shopName = ShopName;
+                    Constant.listItem = listItem;
+//                    Intent intent = new Intent(.this, SummaryActivity.class);
+//                    startActivity(intent);
                     sendBuyOrder(context,"http://192.168.225.181:8080/order",listItem,ShopName);
                 } catch (JSONException e) {
                     e.printStackTrace();

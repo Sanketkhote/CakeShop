@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         shop_recycler=findViewById(R.id.shop_recycler);
-        showShopDetails("http://192.168.225.181:8080/shops",shop_recycler);
+        showShopDetails("http://192.168.0.5:8080/shops",shop_recycler);
     }
     public void showShopDetails(String url,final RecyclerView recyclerView){
         List<Listitem> listitems_shop;
