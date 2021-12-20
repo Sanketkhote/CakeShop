@@ -128,6 +128,8 @@ public class adapter_cake extends RecyclerView.Adapter<adapter_cake.ViewHolder> 
             @Override
             public void onResponse(JSONObject response) {
                 Toast.makeText(context,"Order placed Successfully",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context, HomeActivity.class);
+                context.startActivity(intent);
             }
         }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
             @Override

@@ -64,8 +64,6 @@ public class SummaryActivity extends Activity {
                 try {
                     sendBuyOrder(getApplicationContext(),Constant.endpoint+"/order",listItem,Constant.shopName);
 //
-                    Intent intent = new Intent(SummaryActivity.this, HomeActivity.class);
-                    startActivity(intent);
 
 //                    sendEmail(Constant.endpoint+"/send-email/"+emailText.toString());
                 } catch (JSONException e) {
