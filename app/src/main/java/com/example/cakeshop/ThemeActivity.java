@@ -21,6 +21,7 @@ public class ThemeActivity extends Activity {
     private EditText mTitleEdit;
     private EditText mNumberEdit;
     private EditText mEmailEdit;
+    private EditText mDateEdit;
     private Button mContinueButton;
     private EditText mAddressEdit;
 
@@ -36,6 +37,7 @@ public class ThemeActivity extends Activity {
         mThemeEdit = (EditText) findViewById(R.id.theme_edit_text);
         mTitleEdit = (EditText) findViewById(R.id.cake_edit_text);
         mNumberEdit = (EditText) findViewById(R.id.phone_edit);
+        mDateEdit = (EditText) findViewById(R.id.dateTime);
         mEmailEdit = (EditText) findViewById(R.id.emailText_edit);
         mAddressEdit =(EditText) findViewById(R.id.address_edit);
 //        mLogos = Pages.themePics;
@@ -50,11 +52,13 @@ public class ThemeActivity extends Activity {
                 String themeText =  mThemeEdit.getText().toString();
                 String titleText = mTitleEdit.getText().toString();
                 String numberText = mNumberEdit.getText().toString();
+                String dateText = mDateEdit.getText().toString();
                 String emailText = mEmailEdit.getText().toString();
                 String addressText = mAddressEdit.getText().toString();
 
                 Constant.cakeText = titleText;
                 Constant.cakeTheme = themeText;
+                Constant.dateText = dateText;
                 Constant.numberText = numberText;
                 Constant.emailText = emailText;
                 Constant.address = addressText;

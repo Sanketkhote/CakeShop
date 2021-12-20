@@ -36,6 +36,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -109,17 +110,23 @@ public class adapter_cake extends RecyclerView.Adapter<adapter_cake.ViewHolder> 
     }
     public static void sendBuyOrder(Context context,String url,Listitem_cake listitem,String shopName) throws JSONException {
         JSONObject jsonRequest=new JSONObject();
+        Date date=java.util.Calendar.getInstance().getTime();
+
         jsonRequest.put("shop_name",shopName);
         jsonRequest.put("cake_name",listitem.getHeading());
         jsonRequest.put("price",listitem.getPrice());
         jsonRequest.put("customer_mob",Constant.numberText);
         jsonRequest.put("customer_email",Constant.emailText);
+        jsonRequest.put("order_date",date.toString());
+        jsonRequest.put("delivery_date",Constant.dateText);
 
         Map<String,String> hashMap = new HashMap<>();
         hashMap.put("address",Constant.address);
         hashMap.put("customer_email",Constant.emailText);
         hashMap.put("cake_theme",Constant.cakeTheme);
         hashMap.put("cake_title",Constant.cakeText);
+        hashMap.put("order_date",date.toString());
+        hashMap.put("delivery_date",Constant.dateText);
         jsonRequest.put("other_data",hashMap.toString());
 
 

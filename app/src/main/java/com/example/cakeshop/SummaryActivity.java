@@ -42,6 +42,7 @@ public class SummaryActivity extends Activity {
     private TextView mNumberText;
     private TextView mEmailText;
     private TextView mCostText;
+//    private TextView mDateText;
     private TextView mThemeText;
     private TextView mAddressText;
 
@@ -112,6 +113,7 @@ public class SummaryActivity extends Activity {
         mThemeText = (TextView) findViewById(R.id.themeLabel);
         mCakeTitleText = (TextView) findViewById(R.id.cakeTitalLabel);
         mShopText = (TextView) findViewById(R.id.shopLabel);
+        mDateText=(TextView)findViewById(R.id.dateTimeLabel);
 
 
 
@@ -120,6 +122,7 @@ public class SummaryActivity extends Activity {
         mAddressText.setText(Constant.address);
         mCakeTitleText.setText(Constant.cakeText);
         mShopText.setText(Constant.shopName);
+        mDateText.setText(Constant.dateText);
 
         String theme = Constant.cakeTheme;
 

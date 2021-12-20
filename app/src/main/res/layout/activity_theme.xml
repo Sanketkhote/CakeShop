@@ -58,17 +58,17 @@
             android:layout_marginTop="12dp"/>
 
         <EditText
+            android:id="@+id/cake_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/cake_edit_text"
             android:layout_below="@+id/title_prompt"
             android:layout_alignStart="@+id/title_prompt"
-            android:hint="E.g. Happy Birthday Simran, Merry Christmas"
-            android:textSize="14sp"
-            android:textColorHint="#99ffffff"
-            android:textColor="#eeffffff"
             android:layout_marginTop="6dp"
-            android:inputType="textCapWords"/>
+            android:hint="E.g. Happy Birthday Simran, Merry Christmas"
+            android:inputType="textCapWords"
+            android:textColor="#eeffffff"
+            android:textColorHint="#99ffffff"
+            android:textSize="14sp" />
 <!--            android:background="@drawable/abc_edit_text_material"-->
 
 
@@ -83,19 +83,6 @@
             android:layout_below="@+id/cake_edit_text"
             android:layout_alignStart="@+id/cake_edit_text"
             android:layout_marginTop="30dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="[Optional] Would You Like a Special Theme? "
-            android:id="@+id/theme_prompt"
-            android:textSize="20sp"
-            android:textColor="#beffffff"
-            android:padding="3dp"
-            android:layout_below="@+id/theme_prompt_label"
-            android:layout_alignStart="@+id/themeGrid"
-            android:layout_marginTop="10dp"/>
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -104,10 +91,22 @@
             android:textSize="14sp"
             android:textColorHint="#99ffffff"
             android:textColor="#eeffffff"
-            android:layout_below="@+id/theme_prompt"
-            android:layout_alignStart="@+id/theme_prompt"
+            android:layout_below="@+id/theme_prompt_label"
+            android:layout_alignStart="@+id/themeGrid"
             android:layout_marginTop="6dp"
             android:inputType="textCapWords"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter date and time of delivery "
+            android:id="@+id/dateTime"
+            android:textSize="14sp"
+            android:textColorHint="#99ffffff"
+            android:textColor="#eeffffff"
+            android:layout_below="@+id/theme_edit_text"
+            android:layout_alignStart="@+id/theme_edit_text"
+            android:layout_marginTop="6dp"
+            android:inputType="datetime"/>
 
 <!--        <TextView-->
 <!--            android:layout_width="wrap_content"-->
@@ -129,8 +128,8 @@
             android:textSize="14sp"
             android:textColorHint="#99ffffff"
             android:textColor="#eeffffff"
-            android:layout_below="@+id/theme_edit_text"
-            android:layout_alignStart="@+id/theme_prompt"
+            android:layout_below="@+id/dateTime"
+            android:layout_alignStart="@+id/dateTime"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="12dp"
             android:inputType="textCapWords"/>
@@ -140,7 +139,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/emailText_edit"
-            android:layout_alignStart="@+id/theme_prompt"
+            android:layout_alignStart="@+id/dateTime"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="12dp"
             android:hint="Enter your Phone Number"
@@ -153,7 +152,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/phone_edit"
-            android:layout_alignStart="@+id/theme_prompt"
+            android:layout_alignStart="@+id/dateTime"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="12dp"
             android:hint="Enter your Address"

@@ -12,4 +12,5 @@ public class Constant {
     public static String numberText;
     public static String emailText;
     public static String address;
+    public static String dateText;
 }
