@@ -1,4 +1,4 @@
-package com.example.cakeshop;
+package com.viit.cakeshop;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,12 +12,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.cakeshop.adapter.Listitem;
-import com.example.cakeshop.adapter.Listitem_cake;
-import com.example.cakeshop.adapter.adapter_cake;
-import com.example.cakeshop.adapter.adapter_shop;
+import com.viit.cakeshop.R;
+import com.viit.cakeshop.adapter.Listitem_cake;
+import com.viit.cakeshop.adapter.adapter_cake;
 
 import org.json.JSONArray;
 import org.json.JSONException;

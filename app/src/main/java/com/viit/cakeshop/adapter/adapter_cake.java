@@ -1,4 +1,4 @@
-package com.example.cakeshop.adapter;
+package com.viit.cakeshop.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,20 +19,14 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.cakeshop.Cakes;
-import com.example.cakeshop.Constant;
-import com.example.cakeshop.HomeActivity;
-import com.example.cakeshop.MainActivity;
-import com.example.cakeshop.R;
-import com.example.cakeshop.SummaryActivity;
-import com.example.cakeshop.ThemeActivity;
+import com.viit.cakeshop.Constant;
+import com.viit.cakeshop.HomeActivity;
+import com.viit.cakeshop.R;
+import com.viit.cakeshop.ThemeActivity;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 

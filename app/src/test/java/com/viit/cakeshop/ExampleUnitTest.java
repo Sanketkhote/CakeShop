@@ -1,4 +1,4 @@
-package com.example.cakeshop;
+package com.viit.cakeshop;
 
 import org.junit.Test;
 

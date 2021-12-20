@@ -1,17 +1,13 @@
-package com.example.cakeshop;
+package com.viit.cakeshop;
 
-import static com.example.cakeshop.Constant.emailText;
-import static com.example.cakeshop.Constant.listItem;
-import static com.example.cakeshop.adapter.adapter_cake.sendBuyOrder;
+import static com.viit.cakeshop.Constant.listItem;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,13 +17,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.viit.cakeshop.R;
+import com.viit.cakeshop.adapter.adapter_cake;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -63,7 +58,7 @@ public class SummaryActivity extends Activity {
             @Override
             public void onClick(View v) {
                 try {
-                    sendBuyOrder(getApplicationContext(),Constant.endpoint+"/order",listItem,Constant.shopName);
+                    adapter_cake.sendBuyOrder(getApplicationContext(),Constant.endpoint+"/order",listItem,Constant.shopName);
 //
 
 //                    sendEmail(Constant.endpoint+"/send-email/"+emailText.toString());

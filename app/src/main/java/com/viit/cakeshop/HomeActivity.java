@@ -1,4 +1,4 @@
-package com.example.cakeshop;
+package com.viit.cakeshop;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.viit.cakeshop.R;
 
 
 public class HomeActivity extends Activity {

@@ -1,6 +1,6 @@
-package com.example.cakeshop;
+package com.viit.cakeshop;
 
-import com.example.cakeshop.adapter.Listitem_cake;
+import com.viit.cakeshop.adapter.Listitem_cake;
 
 public class Constant {
 

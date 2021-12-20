@@ -1,4 +1,4 @@
-package com.example.cakeshop.adapter;
+package com.viit.cakeshop.adapter;
 
 public class Listitem_cake {
 

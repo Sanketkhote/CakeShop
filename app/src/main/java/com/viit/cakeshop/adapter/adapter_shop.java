@@ -1,9 +1,7 @@
-package com.example.cakeshop.adapter;
+package com.viit.cakeshop.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +9,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.cakeshop.Cakes;
-import com.example.cakeshop.MainActivity;
-import com.example.cakeshop.R;
+import com.viit.cakeshop.Cakes;
+import com.viit.cakeshop.R;
 import com.squareup.picasso.Picasso;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,7 +42,7 @@ public class adapter_shop  extends RecyclerView.Adapter<adapter_shop.ViewHolder>
             @Override
             public void onClick(View v) {
 
-                Intent intent=new Intent(context,Cakes.class);
+                Intent intent=new Intent(context, Cakes.class);
                 intent.putExtra("shop_name",listItem.getHeading());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);

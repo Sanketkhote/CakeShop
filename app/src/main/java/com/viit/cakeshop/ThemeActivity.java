@@ -1,4 +1,4 @@
-package com.example.cakeshop;
+package com.viit.cakeshop;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.Toast;
+
+import com.viit.cakeshop.R;
 
 
 public class ThemeActivity extends Activity {

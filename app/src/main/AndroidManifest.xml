@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cakeshop">
+    package="com.viit.cakeshop">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,19 +14,19 @@
         android:theme="@style/Theme.CakeShop"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Cakes"
+            android:name="com.viit.cakeshop.Cakes"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.viit.cakeshop.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".ThemeActivity"
+            android:name="com.viit.cakeshop.ThemeActivity"
             android:exported="true" />
         <activity
-            android:name=".SummaryActivity"
+            android:name="com.viit.cakeshop.SummaryActivity"
             android:exported="true" />
         <activity
-            android:name=".HomeActivity"
+            android:name="com.viit.cakeshop.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
