@@ -63,7 +63,11 @@ public class SummaryActivity extends Activity {
             public void onClick(View v) {
                 try {
                     sendBuyOrder(getApplicationContext(),Constant.endpoint+"/order",listItem,Constant.shopName);
-                    sendEmail(Constant.endpoint+"/send-email/"+emailText.toString());
+//
+                    Intent intent = new Intent(SummaryActivity.this, HomeActivity.class);
+                    startActivity(intent);
+
+//                    sendEmail(Constant.endpoint+"/send-email/"+emailText.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

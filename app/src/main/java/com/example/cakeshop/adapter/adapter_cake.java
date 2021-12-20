@@ -25,6 +25,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cakeshop.Cakes;
 import com.example.cakeshop.Constant;
+import com.example.cakeshop.HomeActivity;
 import com.example.cakeshop.MainActivity;
 import com.example.cakeshop.R;
 import com.example.cakeshop.SummaryActivity;
@@ -59,7 +60,7 @@ public class adapter_cake extends RecyclerView.Adapter<adapter_cake.ViewHolder> 
     public void onBindViewHolder(@NonNull adapter_cake.ViewHolder holder, int position) {
         final Listitem_cake listItem = listItems.get(position);
         holder.heading.setText(listItem.getHeading());
-        holder.subHeading.setText("Address: " + listItem.getSubHeading());
+        holder.subHeading.setText("Price: " + listItem.getSubHeading());
         Picasso.with(context).load(listItem.getImage()).into(holder.letter);
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +74,8 @@ public class adapter_cake extends RecyclerView.Adapter<adapter_cake.ViewHolder> 
                     Constant.shopName = ShopName;
                     Constant.listItem = listItem;
                     Intent intent = new Intent(context, ThemeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                     context.startActivity(intent);
 //                    sendBuyOrder(context,"http://192.168.225.181:8080/order",listItem,ShopName);
                 } catch (Exception e) {
@@ -109,6 +112,17 @@ public class adapter_cake extends RecyclerView.Adapter<adapter_cake.ViewHolder> 
         jsonRequest.put("shop_name",shopName);
         jsonRequest.put("cake_name",listitem.getHeading());
         jsonRequest.put("price",listitem.getPrice());
+        jsonRequest.put("customer_mob",Constant.numberText);
+        jsonRequest.put("customer_email",Constant.emailText);
+
+        Map<String,String> hashMap = new HashMap<>();
+        hashMap.put("address",Constant.address);
+        hashMap.put("customer_email",Constant.emailText);
+        hashMap.put("cake_theme",Constant.cakeTheme);
+        hashMap.put("cake_title",Constant.cakeText);
+        jsonRequest.put("other_data",hashMap.toString());
+
+
         RequestQueue MyRequestQueue = Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,jsonRequest,new Response.Listener<JSONObject>() {
             @Override
